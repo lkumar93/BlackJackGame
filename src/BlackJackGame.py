@@ -88,7 +88,7 @@ class Card:
 class Hand:
     def __init__(self):
         self.cards = []
-        #pass	# create Hand object
+        # create Hand object
 
     def __str__(self):
         n = 0
@@ -98,15 +98,16 @@ class Hand:
             str1 += " card number " + str(n) +" Value " + str(c)
              
         return str1
-        #pass	# return a string representation of a hand
+        # return a string representation of a hand
 
     def add_card(self, card):
         self.cards.append(card)
-        #pass	# add a card object to a hand
+        # add a card object to a hand
 
     def get_value(self):
         # count aces as 1, if the hand has an ace, then add 10 to hand value if it doesn't bust
-        #pass	# compute the value of the hand
+        # compute the value of the hand
+	value = 0
         aces = 0
         global dealer
         for v in self.cards :
@@ -143,7 +144,7 @@ class Hand:
             d.draw(canvas,[ n * pos[0] , pos [1]])
             n += 1.5
         
-        #pass	# draw a hand on the canvas, use the draw method for cards
+       # draw a hand on the canvas, use the draw method for cards
     
 
         
@@ -161,11 +162,11 @@ class Deck:
         
     def shuffle(self):
         # shuffle the deck 
-        #pass    # use random.shuffle()
+    
         random.shuffle(self.deck)
 
     def deal_card(self):
-        #pass	# deal a card object from the deck
+        # deal a card object from the deck
         c = self.deck[-1]
         self.deck.pop()
         return c
@@ -180,7 +181,7 @@ class Deck:
         
         
         return str1 
-        #pass	# return a string representing the deck
+        # return a string representing the deck
 
 
 ###########################################
@@ -211,31 +212,26 @@ def deal():
     dealer_hand.add_card(deck1.deal_card())
     dealer_hand.add_card(deck1.deal_card())
     
-    #print "player hand: " + str(player_hand)
-    #print "dealer hand: " + str(dealer_hand)
-    #print "Deck: " + str(deck1)
-    # your code goes here
     outcome = "Hit or Stand?"
     in_play = True
 
 def hit():
-    # pass	
+
     global in_play,score,outcome
     # if the hand is in play, hit the player
     if in_play :
         player_hand.add_card(deck1.deal_card())
-        #print player_hand
+
         if player_hand.get_value() >21 :
-            #print "You are Busted"
+            
             outcome = "You are Busted , New Deal ?"
             in_play = False
             score -= 1
-        
+      
    
     # if busted, assign a message to outcome, update in_play and score
        
 def stand():
-    #pass	
     global in_play , score , outcome , dealer
     dealer = 1
     # if hand is in play, repeatedly hit dealer until his hand has value 17 or more
